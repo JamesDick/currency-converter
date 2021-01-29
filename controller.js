@@ -3,15 +3,18 @@
 const model = new Model();
 const view = new View();
 
-view.init();
+view.visitingCurrency = model.visitingCurrency;
+view.visitingAmount = model.visitingAmount;
+view.homeCurrency = model.homeCurrency;
+view.homeAmount = model.homeAmount;
 
 view.setupNumHandlers((i) => {
     model.visitingAmount += i;
-    view.updateVisitingAmount(model.visitingAmount);
+    view.visitingAmount = model.visitingAmount;
 });
 
 view.setupEqualsHandler(() => {
-    view.updateHomeAmount(Math.ceil(model.homeAmount));
+    view.homeAmount = Math.round(model.homeAmount);
 });
 
 view.setupClearHandler(() => {
@@ -20,9 +23,9 @@ view.setupClearHandler(() => {
 });
 
 view.setupVisitingCurrencyHandler(() => {
-    model.visitingCurrency = view.getVisitingCurrency();
+    model.visitingCurrency = view.visitingCurrency;
 });
 
 view.setupHomeCurrencyHandler(() => {
-    model.homeCurrency = view.getHomeCurrency();
+    model.homeCurrency = view.homeCurrency;
 });
