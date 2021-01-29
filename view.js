@@ -23,6 +23,22 @@ class View {
         document.getElementById('homeCurrency').addEventListener('change', handler);
     }
 
+    setupCurrencyOptions(currencyOptions) {
+        for(let curr of currencyOptions) {
+            let option = document.createElement('option');
+            option.text = curr;
+            option.value = curr;
+
+            document.getElementById('homeCurrency').add(option);
+            document.getElementById('visitingCurrency').add(option.cloneNode(true));
+        }
+    }
+
+    clear() {
+        document.getElementById('visitingAmount').value = '';
+        document.getElementById('homeAmount').value = '';
+    }
+
     set visitingAmount(num) { document.getElementById('visitingAmount').value = num; }
 
     set homeAmount(num) { document.getElementById('homeAmount').value = num; }
@@ -33,8 +49,5 @@ class View {
     get homeCurrency() { return document.getElementById('homeCurrency').value; }
     set homeCurrency(curr) { document.getElementById('homeCurrency').value = curr; }
 
-    clear() {
-        document.getElementById('visitingAmount').value = '';
-        document.getElementById('homeAmount').value = '';
-    }
+    set infoDate(date) { document.getElementById('infoDate').innerHTML = `Currency Rates accurate as of ${date}`; }
 }

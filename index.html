@@ -12,37 +12,24 @@
     </header>
     <main>
         <div>
-            <div>
-                <p>
-                    <label for="visitingAmount">Visiting: </label>
-                    <input type="text" name="visitingAmount" id="visitingAmount" disabled>
-                    <select name="visitingCurrency" id="visitingCurrency">
-                        <option value="EUR">EUR</option>
-                        <option value="GBP">GBP</option>
-                        <option value="PLN">PLN</option>
-                    </select>
-                </p>
-            </div>
-            <div>
-                <p>
-                    <label for="homeAmount">Card est: </label>
-                    <input type="text" name="homeAmount" id="homeAmount" disabled>
-                    <select name="homeCurrency" id="homeCurrency">
-                        <option value="GBP">GBP</option>
-                        <option value="EUR">EUR</option>
-                        <option value="PLN">PLN</option>
-                    </select>
-                </p>
-            </div>
-            <div>
-                <button id="7Btn">7</button><button id="8Btn">8</button><button id="9Btn">9</button><br><br>
-                <button id="4Btn">4</button><button id="5Btn">5</button><button id="6Btn">6</button><br><br>
-                <button id="1Btn">1</button><button id="2Btn">2</button><button id="3Btn">3</button><br><br>
-                <button id="CBtn">C</button><button id="0Btn">0</button><button id="=Btn">=</button><br><br>
-            </div>
+            <label for="visitingAmount">Visiting: </label>
+            <input type="text" name="visitingAmount" id="visitingAmount" disabled>
+            <select name="visitingCurrency" id="visitingCurrency"> </select><br><br>
+        </div>
+        <div>
+            <label for="homeAmount">Card est: </label>
+            <input type="text" name="homeAmount" id="homeAmount" disabled>
+            <select name="homeCurrency" id="homeCurrency"> </select><br><br>
+        </div>
+        <div>
+            <button id="7Btn">7</button><button id="8Btn">8</button><button id="9Btn">9</button><br><br>
+            <button id="4Btn">4</button><button id="5Btn">5</button><button id="6Btn">6</button><br><br>
+            <button id="1Btn">1</button><button id="2Btn">2</button><button id="3Btn">3</button><br><br>
+            <button id="CBtn">C</button><button id="0Btn">0</button><button id="=Btn">=</button><br><br>
         </div>
     </main>
     <footer>
+        <p id="infoDate"></p>
         <script src="model.js"></script>
         <script src="view.js"></script>
         <script src="controller.js"></script>

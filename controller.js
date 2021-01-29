@@ -3,6 +3,7 @@
 const model = new Model();
 const view = new View();
 
+view.setupCurrencyOptions(model.currencyList);
 view.visitingCurrency = model.visitingCurrency;
 view.visitingAmount = model.visitingAmount;
 view.homeCurrency = model.homeCurrency;
@@ -29,3 +30,5 @@ view.setupVisitingCurrencyHandler(() => {
 view.setupHomeCurrencyHandler(() => {
     model.homeCurrency = view.homeCurrency;
 });
+
+view.infoDate = model.infoDate;
