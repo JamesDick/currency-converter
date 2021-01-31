@@ -1,17 +1,17 @@
 'use strict';
 
 const model = new Model();
-const view = new View();
-
-view.setupCurrencyOptions(model.currencyList);
-view.visitingCurrency = model.visitingCurrency;
-view.visitingAmount = model.visitingAmount;
-view.homeCurrency = model.homeCurrency;
-view.homeAmount = model.homeAmount;
+const view = new View(
+    model.currencyList, 
+    model.visitingCurrency, 
+    model.visitingAmount, 
+    model.homeCurrency, 
+    model.homeAmount, 
+    model.lastUpdated
+);
 
 view.setupNumHandlers((i) => {
-    model.visitingAmount += i;
-    view.visitingAmount = model.visitingAmount;
+    view.visitingAmount = model.visitingAmount += i;;
 });
 
 view.setupEqualsHandler(() => {
@@ -19,8 +19,7 @@ view.setupEqualsHandler(() => {
 });
 
 view.setupClearHandler(() => {
-    model.visitingAmount = '';
-    view.clear();
+    view.visitingAmount = view.homeAmount = model.visitingAmount = '';
 });
 
 view.setupVisitingCurrencyHandler(() => {
@@ -30,5 +29,3 @@ view.setupVisitingCurrencyHandler(() => {
 view.setupHomeCurrencyHandler(() => {
     model.homeCurrency = view.homeCurrency;
 });
-
-view.infoDate = model.infoDate;
