@@ -7,7 +7,8 @@ const view = new View(
     model.visitingAmount, 
     model.homeCurrency, 
     model.homeAmount, 
-    model.lastUpdated
+    model.lastUpdated,
+    model.bankFee
 );
 
 view.setupNumHandlers((i) => {
@@ -28,4 +29,8 @@ view.setupVisitingCurrencyHandler(() => {
 
 view.setupHomeCurrencyHandler(() => {
     model.homeCurrency = view.homeCurrency;
+});
+
+view.setupBankFeeHandler(() => {
+    model.bankFee = view.bankFee;
 });

@@ -3,6 +3,7 @@
 class Model {
     constructor() {
         this._visitingAmount = '';
+        this._bankFee = localStorage.bankFee || '1.00';
         this._visitingCurrency = localStorage.visitingCurrency || 'EUR';
         this._homeCurrency = localStorage.homeCurrency || 'GBP';
         this._lastUpdated = localStorage.lastUpdated || '2021-01-29'
@@ -19,7 +20,10 @@ class Model {
     get homeCurrency() { return this._homeCurrency; }
     set homeCurrency(homeCurrency) { localStorage.homeCurrency = this._homeCurrency = homeCurrency; }
 
-    get homeAmount() { return this._visitingAmount / (this._currencyRates[this._visitingCurrency]) * (this._currencyRates[this._homeCurrency]); }
+    get bankFee() { return this._bankFee; }
+    set bankFee(bankFee) { localStorage.bankFee = this._bankFee = bankFee; }
+
+    get homeAmount() { return this._visitingAmount / (this._currencyRates[this._visitingCurrency]) * (this._currencyRates[this._homeCurrency]) * this._bankFee; }
 
     get currencyList() { return Object.keys(this._currencyRates); }
 
