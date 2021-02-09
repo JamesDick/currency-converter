@@ -1,36 +1,50 @@
 'use strict';
 
-const model = new Model();
-const view = new View(
-    model.currencyList, 
-    model.visitingCurrency, 
-    model.visitingAmount, 
-    model.homeCurrency, 
-    model.homeAmount, 
-    model.lastUpdated,
-    model.bankFee
-);
+(function setupServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        console.log('Attempting to register service worker...');
+        navigator.serviceWorker
+            .register('serviceWorker.js')
+            .then(success => console.log('Service worker registered successfully.'), 
+                  failure => console.log('Service worker failed to register.'));
+    } else {
+        console.log('Browser does not support service worker.');
+    }
+})();
 
-view.setupNumHandlers((i) => {
-    view.visitingAmount = model.visitingAmount += i;;
-});
+(function init() {
+    const model = new Model();
+    const view = new View(
+        model.currencyList, 
+        model.visitingCurrency, 
+        model.visitingAmount, 
+        model.homeCurrency, 
+        model.homeAmount, 
+        model.lastUpdated,
+        model.bankFee
+    );
 
-view.setupEqualsHandler(() => {
-    view.homeAmount = Math.round(model.homeAmount);
-});
+    view.setupNumHandlers((i) => {
+        view.visitingAmount = model.visitingAmount += i;
+    });
 
-view.setupClearHandler(() => {
-    view.visitingAmount = view.homeAmount = model.visitingAmount = '';
-});
+    view.setupEqualsHandler(() => {
+        view.homeAmount = Math.round(model.homeAmount);
+    });
 
-view.setupVisitingCurrencyHandler(() => {
-    model.visitingCurrency = view.visitingCurrency;
-});
+    view.setupClearHandler(() => {
+        view.visitingAmount = view.homeAmount = model.visitingAmount = '';
+    });
 
-view.setupHomeCurrencyHandler(() => {
-    model.homeCurrency = view.homeCurrency;
-});
+    view.setupVisitingCurrencyHandler(() => {
+        model.visitingCurrency = view.visitingCurrency;
+    });
 
-view.setupBankFeeHandler(() => {
-    model.bankFee = view.bankFee;
-});
+    view.setupHomeCurrencyHandler(() => {
+        model.homeCurrency = view.homeCurrency;
+    });
+
+    view.setupBankFeeHandler(() => {
+        model.bankFee = view.bankFee;
+    });
+})();
