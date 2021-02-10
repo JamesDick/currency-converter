@@ -67,7 +67,6 @@ class View {
     get bankFee() { return document.getElementById('bankFee').value; }
     set bankFee(bankFee) { 
         document.getElementById('bankFee').value = bankFee;
-        document.getElementById('bankFeeDisplay').innerText = `${bankFee[bankFee.length - 1]}%`;
     }
 
     set lastUpdated(date) { document.getElementById('lastUpdated').innerHTML = `Currency Rates last updated on ${date}`; }

@@ -87,6 +87,7 @@ body {
 }
 
 .sidebar .downArrow {
+  color: orange;
   font-size: 6vw;
 }
 
