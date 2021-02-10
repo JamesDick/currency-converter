@@ -28,7 +28,7 @@
     });
 
     view.setupEqualsHandler(() => {
-        view.displayAmount = Math.round(model.homeAmount);
+        view.displayAmount = Math.ceil(model.homeAmount);
         view.displayCurrency = model.homeCurrency;
         model.visitingAmount = '';
     });

@@ -90,7 +90,7 @@ body {
   display: block;
 }
 
-#main {
+.main {
   margin-left: 12vw;
   transition: margin-left 0.5s;
   padding: 16px;
