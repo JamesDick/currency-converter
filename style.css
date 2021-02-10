@@ -86,6 +86,10 @@ body {
   color: #202020;
 }
 
+.sidebar .downArrow {
+  font-size: 6vw;
+}
+
 #expandedContents {
   display: none;
 }
