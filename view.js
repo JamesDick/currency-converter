@@ -1,28 +1,74 @@
 'use strict';
 
 class View {
-    constructor(currencyList, visitingCurrency, visitingAmount, homeCurrency, homeAmount, lastUpdated, bankFee) {
+    constructor(currencyList, visitingCurrency, homeCurrency, lastUpdated, bankFee) {
+        this._currencyFlags = {
+            'EUR':'🇪🇺',
+            'USD':'	🇺🇸',
+            'JPY':'🇯🇵',
+            'BGN':'🇧🇬',
+            'CZK':'🇨🇿',
+            'DKK':'🇩🇰',
+            'GBP':'🇬🇧',
+            'HUF':'🇭🇺',
+            'PLN':'🇵🇱',
+            'RON':'🇷🇴',
+            'SEK':'🇸🇪',
+            'CHF':'🇨🇭',
+            'ISK':'🇮🇸',
+            'NOK':'🇳🇴',
+            'HRK':'🇭🇷',
+            'RUB':'🇷🇺',
+            'TRY':'🇹🇷',
+            'AUD':'🇦🇺',
+            'BRL':'🇧🇷',
+            'CAD':'🇨🇦',
+            'CNY':'🇨🇳',
+            'HKD':'🇭🇰',
+            'IDR':'🇮🇩',
+            'ILS':'🇮🇱',
+            'INR':'🇮🇳',
+            'KRW':'🇰🇷',
+            'MXN':'🇲🇽',
+            'MYR':'🇲🇾',
+            'NZD':'🇳🇿',
+            'PHP':'🇵🇭',
+            'SGD':'🇸🇬',
+            'THB':'🇹🇭',
+            'ZAR':'🇿🇦'
+        }
         this.setupCurrencyOptions(currencyList);
-        this.visitingCurrency = visitingCurrency;
-        this.visitingAmount = visitingAmount;
+        this.displayCurrency = this.visitingCurrency = visitingCurrency;
         this.homeCurrency = homeCurrency;
-        this.homeAmount = homeAmount;
+        this.displayAmount = 0;
         this.lastUpdated = lastUpdated;
         this.bankFee = bankFee;
+        this.setupBurgerHandler();
     }
 
-    set visitingAmount(num) { document.getElementById('visitingAmount').value = num; }
+    set displayAmount (amount) { document.getElementById('displayAmount').innerText = amount || '0'; }
 
-    set homeAmount(num) { document.getElementById('homeAmount').value = num; }
+    set displayCurrency (currency) { document.getElementById('displayCurrency').innerText = currency; }
 
     get visitingCurrency() { return document.getElementById('visitingCurrency').value; }
-    set visitingCurrency(curr) { document.getElementById('visitingCurrency').value = curr; }
+    set visitingCurrency(currency) { 
+        document.getElementById('visitingCurrency').value = currency; 
+        document.getElementById('visitingCurrencyFlag').innerText = this.getFlag(currency);
+    }
     
     get homeCurrency() { return document.getElementById('homeCurrency').value; }
-    set homeCurrency(curr) { document.getElementById('homeCurrency').value = curr; }
+    set homeCurrency(currency) { 
+        document.getElementById('homeCurrency').value = currency;
+        document.getElementById('homeCurrencyFlag').innerText = this.getFlag(currency);
+    }
+
+    getFlag(currency) { return this._currencyFlags[currency] || '🏴'; }
 
     get bankFee() { return document.getElementById('bankFee').value; }
-    set bankFee(bankFee) { document.getElementById('bankFee').value = bankFee; }
+    set bankFee(bankFee) { 
+        document.getElementById('bankFee').value = bankFee;
+        document.getElementById('bankFeeDisplay').innerText = `${bankFee[bankFee.length - 1]}%`;
+    }
 
     set lastUpdated(date) { document.getElementById('lastUpdated').innerHTML = `Currency Rates last updated on ${date}`; }
 
@@ -49,9 +95,10 @@ class View {
     }
 
     setupCurrencyOptions(currencyOptions) {
-        for (let curr of currencyOptions) {
+        for (let currency of currencyOptions) {
             let option = document.createElement('option');
-            option.text = option.value = curr;
+            option.text = `${this.getFlag(currency)} ${currency}`
+            option.value = currency;
 
             document.getElementById('homeCurrency').add(option);
             document.getElementById('visitingCurrency').add(option.cloneNode(true));
@@ -60,5 +107,26 @@ class View {
 
     setupBankFeeHandler(handler) {
         document.getElementById('bankFee').addEventListener('change', handler);
+    }
+
+    setupBurgerHandler() {
+        const burger = document.getElementById("burger");
+        const expand = _ => {
+            document.getElementById("sidebar").style.width = "40vw";
+            document.getElementById("main").style.marginLeft = "40vw";
+            document.getElementById("expandedContents").style.display = "block";
+            document.getElementById("collapsedContents").style.display = "none";
+            burger.onclick = collapse;
+        }
+          
+        const collapse = _ => {
+            document.getElementById("sidebar").style.width = "12vw";
+            document.getElementById("main").style.marginLeft = "12vw";
+            document.getElementById("expandedContents").style.display = "none";
+            document.getElementById("collapsedContents").style.display = "block";
+            burger.onclick = expand;
+        }
+
+        burger.onclick = expand;
     }
 }

@@ -23,7 +23,12 @@ class Model {
     get bankFee() { return this._bankFee; }
     set bankFee(bankFee) { localStorage.bankFee = this._bankFee = bankFee; }
 
-    get homeAmount() { return this._visitingAmount / (this._currencyRates[this._visitingCurrency]) * (this._currencyRates[this._homeCurrency]) * this._bankFee; }
+    get homeAmount() { 
+        if (this._homeCurrency == this._visitingCurrency) {
+            return this._visitingAmount;
+        }
+        return this._visitingAmount / (this._currencyRates[this._visitingCurrency]) * (this._currencyRates[this._homeCurrency]) * this._bankFee; 
+    }
 
     get currencyList() { return Object.keys(this._currencyRates); }
 

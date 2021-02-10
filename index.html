@@ -4,41 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <title>Currency Calculator</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 </head>
 
 <body>
-    <header>
-        <h1>Currency Calculator</h1>
-    </header>
-    <main>
-        <div>
-            <label for="visitingAmount">Visiting: </label>
-            <input type="text" name="visitingAmount" id="visitingAmount" disabled>
-            <select name="visitingCurrency" id="visitingCurrency"> </select><br><br>
+    <div id="sidebar" class="sidebar">
+        <a href="#" id="burger" class="burger">☰</a>
+        <div id="collapsedContents">
+            <div class="sidebarBackground">
+                <span id="homeCurrencyFlag" class="currencyFlag"></span>
+            </div>
+            <br>
+            <div class="sidebarBackground">
+                <span id="visitingCurrencyFlag" class="currencyFlag"></span>
+            </div>
+            <br>
+            <div class="sidebarBackground">
+                <span id="bankFeeDisplay"></span>
+            </div>
         </div>
-        <div>
-            <label for="homeAmount">Card est: </label>
-            <input type="text" name="homeAmount" id="homeAmount" disabled>
-            <select name="homeCurrency" id="homeCurrency"> </select><br><br>
+        <div id="expandedContents">
+            <div id="homeCurrencyDiv">
+                <label for="homeCurrency">Home Currency</label>
+                <select name="homeCurrency" id="homeCurrency" class="selector">
+
+                </select>
+            </div>
+            <br><hr><br>
+            <div id="visitingCurrencyDiv">
+                <label for="visitingCurrency">Visiting Currency</label>
+                <select name="visitingCurrency" id="visitingCurrency" class="selector">
+
+                </select>
+            </div>
+            <br><hr><br>
+            <div id="bankFeeDiv">
+                <label for="bankFee">Bank Fee</label>
+                <select name="bankFee" id="bankFee" class="selector">
+                    <option value="1.00">0%</option>
+                    <option value="1.02">2%</option>
+                    <option value="1.04">4%</option>
+                    <option value="1.06">6%</option>
+                </select>
+            </div>
+            <br><br>
+            <p id="lastUpdated"></p>
         </div>
-        <div>
-            <button id="7Btn">7</button><button id="8Btn">8</button><button id="9Btn">9</button><br><br>
-            <button id="4Btn">4</button><button id="5Btn">5</button><button id="6Btn">6</button><br><br>
-            <button id="1Btn">1</button><button id="2Btn">2</button><button id="3Btn">3</button><br><br>
-            <button id="CBtn">C</button><button id="0Btn">0</button><button id="=Btn">=</button><br><br>
+
+
+    </div>
+    <div id="main" class="main">
+
+        <div id="display" class="display">
+            <span id="displayAmount" class="amount">400</span>
+            <span id="displayCurrency" class="currency">EUR</span>
         </div>
-        <div>
-            <label for="bankFee">Bank Fee: </label>
-            <select name="bankFee" id="bankFee">
-                <option value="1.00">0%</option>
-                <option value="1.02">2%</option>
-                <option value="1.04">4%</option>
-                <option value="1.06">6%</option>
-            </select>
+
+        <div id="buttons" class="buttons">
+            <button id="7Btn">7</button><button id="8Btn">8</button><button id="9Btn">9</button>
+            <button id="4Btn">4</button><button id="5Btn">5</button><button id="6Btn">6</button>
+            <button id="1Btn">1</button><button id="2Btn">2</button><button id="3Btn">3</button>
+            <button id="CBtn">C</button><button id="0Btn">0</button><button id="=Btn">=</button>
         </div>
-    </main>
+
+    </div>
+
+
+
     <footer>
-        <p id="lastUpdated"></p>
         <script src="model.js"></script>
         <script src="view.js"></script>
         <script src="controller.js"></script>

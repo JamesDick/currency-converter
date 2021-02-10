@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
 let version = 'v1::';
 let offlineFundamentals = [
   '',
+  'normalize.css',
+  'style.css',
   'model.js',
   'view.js',
   'controller.js'

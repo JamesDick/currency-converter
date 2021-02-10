@@ -17,34 +17,39 @@
     const view = new View(
         model.currencyList, 
         model.visitingCurrency, 
-        model.visitingAmount, 
         model.homeCurrency, 
-        model.homeAmount, 
         model.lastUpdated,
         model.bankFee
     );
 
     view.setupNumHandlers((i) => {
-        view.visitingAmount = model.visitingAmount += i;
+        view.displayAmount = model.visitingAmount += i;
+        view.displayCurrency = model.visitingCurrency;
     });
 
     view.setupEqualsHandler(() => {
-        view.homeAmount = Math.round(model.homeAmount);
+        view.displayAmount = Math.round(model.homeAmount);
+        view.displayCurrency = model.homeCurrency;
+        model.visitingAmount = '';
     });
 
     view.setupClearHandler(() => {
-        view.visitingAmount = view.homeAmount = model.visitingAmount = '';
+        view.displayAmount = model.visitingAmount = '';
+        view.displayCurrency = model.visitingCurrency;
     });
 
     view.setupVisitingCurrencyHandler(() => {
-        model.visitingCurrency = view.visitingCurrency;
+        view.displayAmount = model.visitingAmount = '';
+        view.visitingCurrency = view.displayCurrency = model.visitingCurrency = view.visitingCurrency;
     });
 
     view.setupHomeCurrencyHandler(() => {
-        model.homeCurrency = view.homeCurrency;
+        view.displayAmount = model.visitingAmount = ''
+        view.homeCurrency = model.homeCurrency = view.homeCurrency;
+        view.displayCurrency = model.visitingCurrency;
     });
 
     view.setupBankFeeHandler(() => {
-        model.bankFee = view.bankFee;
+        view.bankFee = model.bankFee = view.bankFee;
     });
 })();
