@@ -3,6 +3,8 @@
 let version = 'v1::';
 let offlineFundamentals = [
   '',
+  'icon128.png',
+  'icon192.png',
   'normalize.css',
   'style.css',
   'model.js',
