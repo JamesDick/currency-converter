@@ -1,5 +1,9 @@
 'use strict';
 
+/** This file was developed with the use of the following tutorial: 
+  {@link https://css-tricks.com/serviceworker-for-offline/ 
+    Making a Simple Site Work Offline with ServiceWorker} */
+
 let version = 'v1::';
 let offlineFundamentals = [
   '',
@@ -23,7 +27,7 @@ self.addEventListener("install", event => {
   );
 });
 
-/* When the browser requests a resource via GET, 
+/** When the browser requests a resource via GET, 
    the Service Worker will begin fetching it from the network,
    but in the meantime it will serve a cached version if possible.
 
