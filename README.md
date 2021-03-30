@@ -1,5 +1,5 @@
 ## Currency Converter
-This is a simple Currency Converter web app, made for an assignment at the University of Strathclyde. 
+Simple Currency Converter web app, made for an assignment at the University of Strathclyde. 
 
 The purpose of the app is to be used when travelling abroad. The user can quickly and easily specify an amount of money in a given currency, and the app will calculate the amount this would be in the user's home currency (after converting and applying a configurable bank fee).
 
