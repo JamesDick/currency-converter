@@ -4,16 +4,16 @@
   {@link https://css-tricks.com/serviceworker-for-offline/ 
     Making a Simple Site Work Offline with ServiceWorker} */
 
-let version = 'v1::';
+let version = 'v2::';
 let offlineFundamentals = [
   '',
-  'icon128.png',
-  'icon192.png',
-  'normalize.css',
-  'style.css',
-  'model.js',
-  'view.js',
-  'controller.js'
+  'images/icon128.png',
+  'images/icon192.png',
+  'styles/normalize.css',
+  'styles/style.css',
+  'scripts/model.js',
+  'scripts/view.js',
+  'scripts/controller.js'
 ];
 
 
