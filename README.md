@@ -6,7 +6,7 @@ The purpose of the app is to be used when travelling abroad. The user can quickl
 The currency rates the app uses are based on the [European Central Bank Reference Rates](https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml).
 
 ## Usage
-The app can be used by visiting the site where it's hosted, [here](https://devweb2020.cis.strath.ac.uk/~qsb19184/calculator-asdfghjkl/).
+The app can be used by visiting the site where it's hosted, [here](https://devweb2020.cis.strath.ac.uk/~qsb19184/calculator-asdfghjkl/).<br/><br/>
 
 ![usage](https://user-images.githubusercontent.com/47461489/112997839-5cd32d00-9165-11eb-83fa-3a57e0fb4a6e.gif)
 
